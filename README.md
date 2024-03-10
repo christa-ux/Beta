@@ -1,4 +1,16 @@
 # Beta
+
+## Goal of this project: 
+
+To build a simulation of a smart home system. It should have the following features: 
+
+
+<p> 
+<img src=""/>
+</p>
+
+
+
 ### Team Members
 -Arshpreet Singh (ID: 40172137)
 
