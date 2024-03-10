@@ -5,7 +5,7 @@
 To build a simulation of a smart home system. It should have the following features: 
 
 
-![My Image](Screenshot(122).png)
+![My Image](Screenshot (122).png)
 
 
 ### Team Members
