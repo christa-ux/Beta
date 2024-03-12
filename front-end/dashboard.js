@@ -8,8 +8,6 @@ document.getElementById('toggle-button').addEventListener('change', function() {
     }
   });
 
-  
-/*Date displayed in container-account */
 
 function formatDate(date) {
     const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -37,25 +35,18 @@ document.getElementById('dateDisplay').innerText = formatDate(new Date());
 
   
 
-/*Time display in container-account*/
+
 function updateTime() {
-    const now = new Date(); // Get the current date and time
+    const now = new Date(); 
     let hours = now.getHours();
     let minutes = now.getMinutes();
     let seconds = now.getSeconds();
 
-    // Format time to display as two digits
+   
     hours = hours < 10 ? '0' + hours : hours;
     minutes = minutes < 10 ? '0' + minutes : minutes;
     seconds = seconds < 10 ? '0' + seconds : seconds;
-
-    // Display the time
     document.getElementById('time-display').textContent = `${hours}:${minutes}:${seconds}`;
 }
-
-// Update the time every second
 setInterval(updateTime, 1000);
-
-// Initialize the time display when the page loads
 updateTime();
-
