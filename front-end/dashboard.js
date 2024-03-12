@@ -58,3 +58,4 @@ setInterval(updateTime, 1000);
 
 // Initialize the time display when the page loads
 updateTime();
+

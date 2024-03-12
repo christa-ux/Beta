@@ -37,6 +37,10 @@ margin: 20px;
     margin: 20px 20px 20px 1px; 
 }
 
+.navbar-nav .nav-link.active {
+  font-weight: bold;
+}
+
 
 
 
@@ -96,4 +100,6 @@ margin: 20px;
   .slider.round:before {
     border-radius: 50%;
   }
+
+
   
