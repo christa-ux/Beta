@@ -35,8 +35,7 @@
                 </div>
 
                 <div class="svg-temp" style="display: inline;">
-                    <div style="text-align: center;" id="userTypeDisplay"></div>
-
+                    <h5 style="text-align: center;"> User Type</h5>
                     <h5 style="text-align: center;  margin: 20px 0 40px 0;"> Location: User Location</h5>
                     <svg class="thermostat-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-thermometer-half" viewBox="0 0 16 16">
                         <path d="M9.5 12.5a1.5 1.5 0 1 1-2-1.415V6.5a.5.5 0 0 1 1 0v4.585a1.5 1.5 0 0 1 1 1.415"/>
@@ -80,58 +79,19 @@
             
                 </nav>
                 
-                <div class="row">
-                    <div class="col-md-4 col-sm-12">
-                        <div class="card text-bg-light mb-3" style="max-width: 18rem; margin-top:20px;">
-                            <div class="card-body">
-                            <h5 class="card-title">Items </h5>
-                            <a class="card-text" style="display: block;">Windows</a>
-                            <a class="card-text" style="display: block;">Lights</a>
-                            <a class="card-text" style="display: block;">Doors</a>
-                            </div>
-                        </div>
-                        <div class="card text-bg-light mb-3" style="max-width: 18rem;">
-                            <div class="card-body">
-                            <h5 class="card-title">open/close</h5>
-                                <p class="card-text">
-                                        <form>
-                                        <input type="checkbox">
-                                        <label for="backyard"> Backyard</label><br>
-                                        <input type="checkbox">
-                                        <label for="garage"> Garage</label><br>
-                                        <input type="checkbox">
-                                        <label for="main"> Main</label><br>
-                                        <input type="checkbox">
-                                        <label for="all"> All</label><br>
-                                        <input type="checkbox">
-                                        <label for="none"> None</label>
-                                    </form>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-8 col-sm-12">
-                        <div class="card houseview" style="border: solid 1px black;margin-top: 20px;">
-                            <img src="..." class="card-img-bottom" alt="...">
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12 col-sm-12">
-               
-                        <label for="comment" class="form-label">Output Console</label>
-                        <textarea class="form-control" id="comment" rows="3"></textarea>
-                    </div>
-                </div>
-            </div>
-          
-        </div>
-    </div>
-   
+                <p>Choose the user type you want to be:</p>
 
-</div>
-
-
+                <form>
+                    <input type="radio" id="parent" name="fav_language" value="Parent">
+                    <label for="parent">Parent</label><br>
+                    <input type="radio" id="child" name="fav_language" value="Child">
+                    <label for="child">Child</label><br>
+                    <input type="radio" id="stranger" name="fav_language" value="Stranger">
+                    <label for="stranger">Stranger</label><br>
+                    <input type="radio" id="guest" name="fav_language" value="Guest">
+                    <label for="guest">Guest</label>
+                </form>
+                
 <script src="dashboard.js"></script>
 <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
