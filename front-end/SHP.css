@@ -81,3 +81,8 @@ margin: 20px;
 .navbar-nav .nav-link.active {
     font-weight: bold;
   }
+
+  #mode-indicator {
+    font-size: 12px;
+    margin-left: 10px;
+}

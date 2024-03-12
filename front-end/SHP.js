@@ -1,11 +1,17 @@
 // Placeholder JavaScript functions for SHP module functionalities
 
-// Function to handle "Away Mode" activation
-document.getElementById('toggle-away-mode').addEventListener('change', function() {
-    if (this.checked) {
-        console.log("Away Mode activated");
-    } else {
+document.getElementById('toggle-away-mode').addEventListener('click', function() {
+    var modeIndicator = document.getElementById('mode-indicator');
+    if (this.classList.contains('active')) {
+        this.classList.remove('active');
+        this.textContent = "Enable Away Mode";
+        modeIndicator.textContent = "(Off)";
         console.log("Away Mode deactivated");
+    } else {
+        this.classList.add('active');
+        this.textContent = "Disable Away Mode";
+        modeIndicator.textContent = "(On)";
+        console.log("Away Mode activated");
     }
 });
 
