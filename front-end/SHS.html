@@ -61,16 +61,16 @@
                         <div class="collapse navbar-collapse" id="navbarNav">
                             <ul class="navbar-nav">
                                 <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="#">SHH</a>
+                                    <a class="nav-link " aria-current="page" href="SHH.html">SHH</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">SHP</a>
+                                    <a class="nav-link" href="SHP.html">SHP</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">SHC</a>
+                                    <a class="nav-link" href="SHC.html">SHC</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">SHS</a>
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="SHS.html">SHS</a>
                                 </li>
                             
                             </ul>
@@ -78,10 +78,20 @@
                     </div>
             
                 </nav>
-                
-                <p>Choose the user type you want to be:</p>
 
-                <form>
+                <form style="margin:10px;">
+                    <label for="userDate">Select Date:</label>
+                    <input type="date" id="userDate" name="userDate">
+                    
+                    <label for="userTime">Select Time:</label>
+                    <input type="time" id="userTime" name="userTime">
+                
+
+                
+
+                </form>
+                <!-- <form>
+                    <p>Choose the user type you want to be:</p>
                     <input type="radio" id="parent" name="fav_language" value="Parent">
                     <label for="parent">Parent</label><br>
                     <input type="radio" id="child" name="fav_language" value="Child">
@@ -90,8 +100,58 @@
                     <label for="stranger">Stranger</label><br>
                     <input type="radio" id="guest" name="fav_language" value="Guest">
                     <label for="guest">Guest</label>
-                </form>
-                
+
+                </form> -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3 col-sm-6">
+            <div class="card mb-2" >
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Parent</h5>
+                  <a href="#" class="btn btn-primary">Edit Profile</a>
+                </div>
+              </div>
+        </div>
+        <div class="col-md-3 col-sm-6 mb-2">
+            <div class="card" >
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Child</h5>
+                  <a href="#" class="btn btn-primary">Edit Profile</a>
+                </div>
+              </div>
+        </div>
+        <div class="col-md-3 col-sm-6 mb-2">
+            <div class="card">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Stranger</h5>
+                  <a href="#" class="btn btn-primary">Edit Profile</a>
+                </div>
+              </div>
+        </div>
+        <div class="col-md-3 col-sm-6 mb-2">
+            <div class="card"">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Guest</h5>
+                 
+                  <a href="#" class="btn btn-primary">Edit Profile</a>
+                </div>
+              </div>
+        </div>
+    </div>
+</div>
+<button type="button" class="btn btn-light m-3"> Create new profile
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
+      </svg>
+</button>
+
+                <button type="button" class="btn btn-light m-3">Submit</button>
 <script src="dashboard.js"></script>
 <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -99,3 +159,6 @@
 
 
 </html>
+
+
+<!--- set date time, log in using existing profile and set house location, list existing modu-->

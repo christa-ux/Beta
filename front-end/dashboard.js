@@ -8,8 +8,6 @@ document.getElementById('toggle-button').addEventListener('change', function() {
     }
   });
 
-  
-
 
 function formatDate(date) {
     const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -52,6 +50,3 @@ function updateTime() {
 }
 setInterval(updateTime, 1000);
 updateTime();
-
-
-

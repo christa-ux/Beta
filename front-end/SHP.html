@@ -1,26 +1,107 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="SHP.css">
 
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE-edge"> 
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
-<link rel="stylesheet" href="dashboard.css">
-<title>Beta-Dashboard</title>
+    <title>Beta-Dashboard - SHP</title>
 </head>
-
 <body>
+    <h2 style="margin:20px;"> Smart Home Simulator </h2>
+    <div class="container">
 
+<div class="row">
+  <div class="col-md-3 col-sm-12">
+      <div class="container-account">
+              <h4 style="text-align: center">Simulation Parameters </h4>
+              <div class="switch-container">
+                  <label class="switch">
+                      <input type="checkbox" id="toggle-button" >
+                      <span class="slider round"></span>
+                  </label>
+              </div>
 
+              <div class="svg-person"> 
+                  <svg class="person-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                      <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+                      <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
+                  </svg>
+              </div>
 
+              <div class="svg-temp" style="display: inline;">
+                  <h5 style="text-align: center;"> User Type</h5>
+                  <h5 style="text-align: center;  margin: 20px 0 40px 0;"> Location: User Location</h5>
+                  <svg class="thermostat-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-thermometer-half" viewBox="0 0 16 16">
+                      <path d="M9.5 12.5a1.5 1.5 0 1 1-2-1.415V6.5a.5.5 0 0 1 1 0v4.585a1.5 1.5 0 0 1 1 1.415"/>
+                      <path d="M5.5 2.5a2.5 2.5 0 0 1 5 0v7.55a3.5 3.5 0 1 1-5 0zM8 1a1.5 1.5 0 0 0-1.5 1.5v7.987l-.167.15a2.5 2.5 0 1 0 3.333 0l-.166-.15V2.5A1.5 1.5 0 0 0 8 1"/>
+                  </svg>
 
+                  <h5 style="text-align: center; display: inline;"> Outside temperature: 15C</h5>
+                  <div id="dateDisplay" style="text-align: center;  margin: 20px 0 10px 0;"></div>
+                      <div id="time-display">00:00:00</div>
+              </div>
 
+            
+      </div>
+</div>
 
-<script src="dashboard.js"></script>
-<script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-
+            <div class="col-md-9 col-sm-12">
+                <div class="container-navbar">
+                    <!-- Navbar Section -->
+                    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                        <div class="container-fluid">
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbarNav">
+                                <ul class="navbar-nav">
+                                    <li class="nav-item">
+                                        <a class="nav-link" aria-current="page" href="SHH.html">SHH</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link active" href="SHP.html">SHP</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link " href="dashboard.html">SHC</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="SHS.html">SHS</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                     <div class="row">
+                        <div class="col-md-12 col-sm-12">
+                            <button class="btn btn-primary away-mode-btn" id="enable-away-mode">Enable Away Mode</button>
+                            <div class="form-group">
+                                <label for="time-before-alert">Time Before Alerting Authorities (minutes):</label>
+                                <div class="input-group">
+                                    <input type="number" class="form-control time-before-alert-input" id="time-before-alert" min="1">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-success save-btn" type="button" id="save-time">Save</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Output Console Section -->
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12">
+                            <label for="comment" class="form-label">Output Console</label>
+                            <textarea class="form-control" id="comment" rows="3" readonly></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="dashboard.js"></script>
+    <script src="SHP.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
-
 </html>
