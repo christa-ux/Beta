@@ -1,5 +1,12 @@
 package backend.javaFiles.Users;
 
-public class Child {
-    
+class Child extends User {
+    public Child(String username) {
+        super(username);
+    }
+
+    @Override
+    public String getUserType() {
+        return "Child";
+    }
 }
