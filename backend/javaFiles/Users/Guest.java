@@ -1,5 +1,12 @@
 package backend.javaFiles.Users;
 
-public class Guest {
-    
+class Guest extends User {
+    public Guest(String username) {
+        super(username);
+    }
+
+    @Override
+    public String getUserType() {
+        return "Guest";
+    }
 }
