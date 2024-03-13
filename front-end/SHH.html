@@ -66,15 +66,96 @@
                                         <a class="nav-link" href="SHP.html">SHP</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link " href="dashboard.html">SHC</a>
+                                        <a class="nav-link " href="SHC.html">SHC</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#">SHS</a>
+                                        <a class="nav-link" href="SHS.html">SHS</a>
                                     </li>
                                 </ul>
                             </div>
                         </div>
                     </nav>
+
+                                               <!-- Zones and Temperature Settings Section -->
+        <div class="row">
+            <div class="col-md-6 col-sm-12">
+                <h4>Zones Temperature Settings</h4>
+                <div class="form-group">
+                    <label for="zone-select">Select Zone:</label>
+                    <select class="form-control" id="zone-select">
+                        <option value="zone1">Zone 1</option>
+                        <option value="zone2">Zone 2</option>
+                        <option value="zone3">Zone 3</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="temp-setting">Set Temperature (°C):</label>
+                    <input type="number" class="form-control" id="temp-setting" min="0" max="40">
+                </div>
+                <div class="form-group">
+                    <label for="periods">Number of Periods per Day:</label>
+                    <input type="number" class="form-control" id="periods" min="1" max="3">
+                </div>
+                <button class="btn btn-primary" id="set-temp-btn">Set Temperature</button>
+            </div>
+        </div>
+
+        <!-- Rooms and Temperature Settings Section -->
+        <div class="row">
+            <div class="col-md-6 col-sm-12">
+                <h4>Rooms Temperature Settings</h4>
+                <div class="form-group">
+                    <label for="room-select">Select Room:</label>
+                    <select class="form-control" id="room-select">
+                        <option value="room1">Room 1</option>
+                        <option value="room2">Room 2</option>
+                        <option value="room3">Room 3</option>
+                        <option value="room3">Room 4</option>
+                        <option value="room3">Room 5</option>
+                        <option value="room3">Room 6</option>
+                        <option value="room3">Room 7</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="unoccupied-temp">Set Temperature When Unoccupied (°C):</label>
+                    <input type="number" class="form-control" id="unoccupied-temp" min="0" max="40">
+                </div>
+                <button class="btn btn-primary" id="set-unoccupied-temp-btn">Set Temperature</button>
+            </div>
+        </div>
+
+        <!-- Get Current Temperature Section -->
+        <div class="row">
+            <div class="col-md-6 col-sm-12">
+                <h4>Get Current Temperature</h4>
+                <div class="form-group">
+                    <label for="zone-room-select">Select Room:</label>
+                    <select class="form-control" id="zone-room-select">
+                        <option value="room1">Room 1</option>
+                        <option value="room2">Room 2</option>
+                        <option value="room3">Room 3</option>
+                        <option value="room3">Room 4</option>
+                        <option value="room3">Room 5</option>
+                        <option value="room3">Room 6</option>
+                        <option value="room3">Room 7</option>
+                    </select>
+                </div>
+                <button class="btn btn-primary" id="get-temp-btn">Get Temperature</button>
+                <div id="current-temp-display"></div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 col-sm-12">
+                <h4>Indoor Temperature</h4>
+                <div id="indoor-temp-display"></div>
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <h4>Outdoor Temperature</h4>
+                <div id="outdoor-temp-display"></div>
+            </div>
+        </div>
+
                     
                     <!-- Output Console Section -->
                     <div class="row">
