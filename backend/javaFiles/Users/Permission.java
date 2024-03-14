@@ -1,4 +1,6 @@
-package backend.javaFiles.permissions;
+package backend.javaFiles.Users;
+
+//package backend.javaFiles.permissions;
 
 public enum Permission {
     OPEN_CLOSE_WINDOWS,

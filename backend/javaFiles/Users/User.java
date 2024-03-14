@@ -1,5 +1,7 @@
+package backend.javaFiles.Users;
 
-import backend.javaFiles.permissions.Permission;
+
+//import backend.javaFiles.Permission.Permission;
 
 import java.util.EnumSet;
 import java.util.Set;

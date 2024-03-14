@@ -1,4 +1,7 @@
 package backend.javaFiles.Users;
+
+import java.util.EnumSet;
+
 class Parent extends User {
     public Parent(String username) {
         super(username);

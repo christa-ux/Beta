@@ -1,11 +1,11 @@
 package backend.javaFiles.Users;
 
-class Stranger extends User {
+public class Stranger extends User {
     public Stranger(String username) {
         super(username);
     }
-
-    @Override
+    
+@Override
     public String getUserType() {
         return "Stranger";
     }
