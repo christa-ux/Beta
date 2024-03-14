@@ -7,6 +7,15 @@ public class Room {
     private ArrayList<Room> AdjacentRooms;
     private Home home;
     private int position =0;
+    private int row;
+    private int col;
+
+
+    private Room AdjacentLEFT;
+    private Room AdjacentRIGHT;
+    private Room AdjacentUP;
+    private Room AdjacentDOWN;
+
 
     final int MAXADJACENT = 4;
 
@@ -41,9 +50,24 @@ public class Room {
         return this.position;
     }
 
+    public int getColumn(){
+        return this.col;
+    }
+    public int getRow(){
+        return this.row;
+    }
+
     //setters
     public void setPosition(int pos){
         this.position = pos;
+    }
+
+    public void setColumn(int col){
+        this.col = col;
+    }
+
+    public void setRow(int row){
+        this.row = row;
     }
 
 }
