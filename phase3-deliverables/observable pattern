@@ -1,0 +1,75 @@
+import java.util.ArrayList;
+import java.util.List;
+
+
+public interface Subject {
+    void attach(Observer observer);
+    void detach(Observer observer);
+    void notifyObservers();
+}
+
+
+public interface Observer {
+    void update(int temp, int person); //temp represents inside temperature
+}
+
+
+public class SmartHomeSimulator implements Subject {
+    private List<Observer> observers = new ArrayList<>();
+    private int temp;
+    private int person;
+    
+   public void setTemp(int temp) {
+        this.temp = temp;
+        notifyObservers();
+    }
+
+    public void setNumPeople(int person) {
+        this.person = person;
+        notifyObservers();
+    }
+
+    @Override
+    public void attach(Observer observer) {
+        observers.add(observer);
+    }
+
+    @Override
+    public void detach(Observer observer) {
+        observers.remove(observer);
+    }
+
+    @Override
+    public void notifyObservers() {
+        for (Observer observer : observers) {
+            observer.update(temp, person);
+        }
+    }
+}
+
+class HeatingSystem implements Observer {
+    int outsideTemp;
+   
+    @Override
+    public void update(int temperature, int numberOfPeople) {
+    System.out.println("Heating System received update:");
+    if(temp<=0) {
+    System.out.println("Rikes of pipes bursting");
+    }
+    
+    if (outsideTemp<temp && outsideTemp>=20) {
+    System.out.println("Outside temperature cooler than inside!");
+    }
+   //object parent, child, stranger, guest
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        SmartHomeSimulator smartHomeSimulator = new SmartHomeSimulator();
+        HeatingSystem heatingSystem = new HeatingSystem();
+        smartHomeSimulator.attach(heatingSystem);
+        smartHomeSimulator.setTemp(25);
+        smartHomeSimulator.setNumPeople(3);
+    }
+}
