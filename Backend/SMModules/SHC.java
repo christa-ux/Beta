@@ -1,5 +1,5 @@
 package Backend.SMModules;
 
-public class HeatingModule {
+public class SHC {
     
 }

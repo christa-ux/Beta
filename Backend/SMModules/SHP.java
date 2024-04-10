@@ -1,5 +1,5 @@
 package Backend.SMModules;
 
-public class CoreModule {
+public class SHP {
     
 }

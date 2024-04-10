@@ -1,2 +1,6 @@
-christa	christa
-haha	hehe
+
+mom	mom	PARENT
+child	child	CHILD
+hahahaha	hehehe	GUEST
+random	noOne	STRANGER
+daddy	dad	PARENT

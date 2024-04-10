@@ -1,3 +1,5 @@
+//log in and signup page 
+
 package Backend.Users;
 import java.awt.*;
 import java.awt.event.*;
@@ -10,6 +12,17 @@ import Backend.TabbedPaneDemo;
 class SignUp extends JFrame {
     JTextField t1,t2;
     JButton b1;
+
+    // Declaration of object of JRadioButton class
+    JRadioButton jRadioButton1;
+    JRadioButton jRadioButton2;
+    JRadioButton jRadioButton3;  
+    JRadioButton jRadioButton4; 
+
+    // JButton jButton; 
+    ButtonGroup G1;
+    JLabel L1; 
+
     SignUp() {
         setLayout(null);
         t1=new JTextField(60);
@@ -18,22 +31,78 @@ b1=new JButton("Submit");
 t1.setBounds(100,20,80,30);
 t2.setBounds(100,60,80,30);
 b1.setBounds(100,100,80,30);
+
+// Initialization of object of "JRadioButton" class. 
+jRadioButton1 = new JRadioButton();
+jRadioButton2 = new JRadioButton();
+jRadioButton3 = new JRadioButton();
+jRadioButton4 = new JRadioButton();
+
+G1 = new ButtonGroup();
+L1 = new JLabel("Type\n");
+
+jRadioButton1.setText("Parent");
+jRadioButton2.setText("Child");
+jRadioButton3.setText("Stranger");
+jRadioButton4.setText("Guest");
+
+jRadioButton1.setBounds(100, 180, 80, 50);
+jRadioButton2.setBounds(200, 180, 80, 50);
+jRadioButton3.setBounds(300, 180, 80, 50);
+jRadioButton4.setBounds(400, 180, 80, 50);
+L1.setBounds(100, 140, 150, 50);
+
+
 b1.addActionListener(new ActionListener() {
     public void actionPerformed(ActionEvent ae){
         try {
+            String username = t1.getText();
+            String password = t2.getText();
+
+            // Check if username or password contains spaces
+            if (username.contains(" ") || password.contains(" ")) {
+                JOptionPane.showMessageDialog(new JFrame(), "Username and password cannot contain spaces.");
+                return; 
+            }
+            User newUser = null;
+            if(jRadioButton1.isSelected()) {
+                newUser = new Parent(username, password);
+            }
+            else if (jRadioButton2.isSelected()) {
+                newUser = new Child(username, password);
+            }
+            else if(jRadioButton3.isSelected()) {
+                newUser = new Stranger(username, password);
+            }
+            else {
+                newUser = new Guest(username, password);
+            }
+
 FileWriter fw= new FileWriter("UserData.txt",true);
-fw.write(t1.getText()+"\t"+t2.getText()+"\n");
+fw.write(newUser.getUsername() + "\t" + newUser.getUserPassword() + "\t" + newUser.getType() + "\n");
 fw.close();    
 JFrame f=new JFrame();
 JOptionPane.showMessageDialog(f, "Registration Completed");
 dispose();
-}catch(Exception e) {}
+}catch(Exception e) {
+    e.printStackTrace();
+}
 }
     
 });
 add(t1);
 add(t2);
 add(b1);
+add(L1);
+add(jRadioButton1);
+add(jRadioButton2);
+add(jRadioButton3);
+add(jRadioButton4);
+G1.add(jRadioButton1); 
+G1.add(jRadioButton2); 
+G1.add(jRadioButton3); 
+G1.add(jRadioButton4); 
+
     }
 }
 
@@ -73,36 +142,42 @@ add(b1);
     add(t1);
     add(t2);
     add(b1);
-add(b2);
+    add(b2);
     b1.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent ae){
             boolean matched=false;
-            String uname=t1.getText().toString();
-            String password=t2.getText().toString();
+            String username=t1.getText();
+            String password=t2.getText();
             try {
             FileReader fr=new FileReader("UserData.txt");
             BufferedReader br=new BufferedReader(fr);
             String line;
             while((line=br.readLine())!=null) {
-if(line.equals(uname+"\t"+password)){
-    matched=true;
-    break;
-}
+                String[] parts = line.split("\t");
+                if (parts.length == 3 && parts[0].equals(username) && parts[1].equals(password)) {
+                    matched=true;
+                    break;
+                }
             }
             fr.close();
-        }catch(Exception e){}
+        }catch(Exception e){
+            e.printStackTrace();
+        }
 
             if(matched) {
-dispose();
-TabbedPaneDemo tabbed= new TabbedPaneDemo();
-//tabbed.setBounds(400,200,400,300)
-tabbed.setVisible(true);
-            }else {
-                l2.setText("Invalid Username or Password");
-            }
-      
-        }
-    });
+            dispose();
+            SwingUtilities.invokeLater(new Runnable() {
+                public void run() {
+                    UIManager.put("swing.boldMetal", Boolean.FALSE);
+                    TabbedPaneDemo.createAndShowGUI();
+                }
+            });
+                        }else {
+                            l2.setText("Invalid Username or Password");
+                        }
+                
+                    }
+                });
     b2.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent ae) {
 SignUp s=new SignUp();
@@ -120,3 +195,4 @@ class LoginDemo {
 
     }
 }
+
