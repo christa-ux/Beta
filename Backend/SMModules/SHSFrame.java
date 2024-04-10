@@ -260,6 +260,10 @@ public class SHSFrame extends javax.swing.JFrame implements LoginListener {
         String usernameText = username.getText();
         String passwordText = password.getText();
         UserType userTypeText;
+        if (usernameText.contains(" ") || passwordText.contains(" ")) {
+            JOptionPane.showMessageDialog(this, "Username and password cannot contain spaces.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
         if (PARENT.isSelected()) {
             userTypeText = UserType.PARENT;
         } else if (CHILD.isSelected()) {

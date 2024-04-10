@@ -1,4 +1,4 @@
 child	child	CHILD
 hahahaha	hehehe	GUEST
 daddy	dad	PARENT
-Enter username	Enter password	CHILD
+username	password	STRANGER
