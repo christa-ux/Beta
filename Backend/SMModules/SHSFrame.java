@@ -1,22 +1,20 @@
 package Backend.SMModules;
+import Backend.Users.*;
 import Backend.Users.User.UserType;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.util.Vector;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 
-public class SHSFrame extends javax.swing.JFrame {
+public class SHSFrame extends javax.swing.JFrame implements LoginListener {
     public SHSFrame() {
         initComponents();
   
     }
 
    
-                             
+                        
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
@@ -77,6 +75,7 @@ public class SHSFrame extends javax.swing.JFrame {
         userTypeLable.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         userTypeLable.setText("User Type");
 
+        buttonGroup1.add(PARENT);
         PARENT.setText("PARENT");
         PARENT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -84,6 +83,7 @@ public class SHSFrame extends javax.swing.JFrame {
             }
         });
 
+        buttonGroup1.add(CHILD);
         CHILD.setText("CHILD");
         CHILD.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,8 +91,10 @@ public class SHSFrame extends javax.swing.JFrame {
             }
         });
 
+        buttonGroup1.add(GUEST);
         GUEST.setText("GUEST");
 
+        buttonGroup1.add(STRANGER);
         STRANGER.setText("STRANGER");
 
         addButton.setText("Add");
@@ -229,9 +231,28 @@ public class SHSFrame extends javax.swing.JFrame {
         pack();
     }                       
   
-                                         
+    @Override
+    public void loginPerformed(LoginEvent event) {
+        try {
+            FileInputStream file = new FileInputStream("UserData.txt");
+            ObjectInputStream input = new ObjectInputStream(file);
+
+            Vector<Vector> tableData = (Vector<Vector>) input.readObject();
+            input.close();
+            file.close();
+            DefaultTableModel model = (DefaultTableModel) TableUsers.getModel();
+            model.setRowCount(0); // Clear existing data
+            for (int i = 0; i < tableData.size(); i++) {
+                Vector row = tableData.get(i);
+                model.addRow(new Object[]{row.get(0), row.get(1), row.get(2)});
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+                             
       
-    private void passwordActionPerformed(java.awt.event.ActionEvent evt) { }                                        
+    private void passwordActionPerformed(java.awt.event.ActionEvent evt) {}                                        
 
     private void usernameActionPerformed(java.awt.event.ActionEvent evt) {}                                        
 
@@ -278,9 +299,17 @@ JOptionPane.showMessageDialog(this, "Please enter all fields", "try again", JOpt
     } else {
         DefaultTableModel model = (DefaultTableModel) TableUsers.getModel();
         model.removeRow(row); // Remove selected row from the model
+        try {
+            FileWriter fw = new FileWriter("UserData.txt");
+            for (int i = 0; i < model.getRowCount(); i++) {
+                fw.write(model.getValueAt(i, 0) + "\t" + model.getValueAt(i, 1) + "\t" + model.getValueAt(i, 2) + "\n");
+            }
+            fw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
-
-    }                                            
+}                                            
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {                                   
         DefaultTableModel model=(DefaultTableModel) TableUsers.getModel();
@@ -315,24 +344,16 @@ catch(Exception e) {
 }
     }                                 
 
-    public static void main(String args[]) {
-       
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new SHSFrame().setVisible(true);
-            }
-        });
-    }
-
+    
                         
     private javax.swing.JRadioButton CHILD;
     private javax.swing.JRadioButton GUEST;
     private javax.swing.JRadioButton PARENT;
     private javax.swing.JRadioButton STRANGER;
-    private javax.swing.JTable TableUsers;
+    public static javax.swing.JTable TableUsers;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField password;
     private javax.swing.JTextField username;
-                 
+                    
 }
