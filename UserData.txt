@@ -1,3 +1,4 @@
-hahahaha	hehehe	GUEST
 daddy	dad	PARENT
 username	password	STRANGER
+hello	bye	GUEST
+hello	bye	CHILD
