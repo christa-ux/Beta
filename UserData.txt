@@ -1,7 +1,6 @@
 username	password	STRANGER
 test	testing	CHILD
 aee	ll	PARENT
-eeaa	sss	PARENT
 hello	hi	GUEST
 marhaba	hi	PARENT
 kkk	w	GUEST
@@ -9,9 +8,7 @@ hahaha	eee	PARENT
 l	o	CHILD
 k	p	STRANGER
 1	2	STRANGER
-we	we	CHILD
-weq	we	CHILD
-11	12	CHILD
 123	122	PARENT
 34	56	PARENT
 kk	mm	CHILD
+username	hehehe	PARENT

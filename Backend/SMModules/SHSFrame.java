@@ -5,10 +5,13 @@ import java.io.*;
 import java.util.Vector;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.awt.event.*;
 
 public class SHSFrame extends javax.swing.JFrame implements LoginListener {
    
-   
+    private JPanel panel;
     public SHSFrame() {
         initComponents();
   
@@ -229,8 +232,17 @@ public class SHSFrame extends javax.swing.JFrame implements LoginListener {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
+
+        
+
         pack();
-    }                       
+
+
+
+       
+    }
+
+
   
     @Override
     public void loginPerformed(LoginEvent event) {
@@ -364,5 +376,6 @@ catch(Exception e) {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField password;
     private javax.swing.JTextField username;
-                    
+
+private javax.swing.JLabel jLabel2;
 }

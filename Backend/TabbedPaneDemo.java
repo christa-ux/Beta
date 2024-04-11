@@ -5,6 +5,7 @@ package Backend;
 import java.io.*;
 import java.awt.*;
 import javax.swing.*;
+import Backend.SMModules.SHP;
 
 import javax.swing.table.DefaultTableModel;
 
@@ -15,6 +16,7 @@ import java.awt.BorderLayout;
  import Backend.SMModules.SHSFrame;
   
  public class TabbedPaneDemo extends JPanel {
+    private SHP shpFrame;
      public TabbedPaneDemo() {
          super(new GridLayout(1, 1));
           
@@ -52,6 +54,12 @@ import java.awt.BorderLayout;
          tabbedPane.setMnemonicAt(4, KeyEvent.VK_5);
         add(tabbedPane);
         tabbedPane.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
+
+        // Create an instance of SHP
+        shpFrame = new SHP();
+
+        // Add SHP frame as a component to the SHP tab
+        tabbedPane.setComponentAt(1, shpFrame.getContentPane());
      }
       
      protected JComponent makeTextPanel(String text) {
