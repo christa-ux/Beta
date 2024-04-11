@@ -1,20 +1,16 @@
 package Backend;
 
-import javax.swing.JTabbedPane;
-import java.awt.*;
+import Backend.SMModules.SHSFrame;
+import Backend.SMModules.SHP;
+import Backend.SMModules.SimulationParam;
+
 import javax.swing.*;
-
 import javax.swing.table.DefaultTableModel;
-
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.GridLayout;
+import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import Backend.SMModules.SHSFrame;
-import Backend.SMModules.SHP;
 
 public class TabbedPaneDemo extends JPanel {
     private SHP shpFrame;
@@ -43,10 +39,11 @@ public class TabbedPaneDemo extends JPanel {
         tabbedPane.addTab("SHS", null, panel4, "Smart Home System");
         tabbedPane.setMnemonicAt(3, KeyEvent.VK_4);
 
-        JComponent panel5 = makeTextPanel("");
-        panel5.setPreferredSize(new Dimension(410, 50));
-        tabbedPane.addTab("Simulation parameters", null, panel5, "Does nothing at all");
+        // Create an instance of SimulationParam panel
+        SimulationParam simulationParamPanel = new SimulationParam();
+        tabbedPane.addTab("Simulation Parameters", null, simulationParamPanel, "Simulation Parameters");
         tabbedPane.setMnemonicAt(4, KeyEvent.VK_5);
+
         add(tabbedPane);
         tabbedPane.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
 

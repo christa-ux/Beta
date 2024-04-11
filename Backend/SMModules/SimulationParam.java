@@ -1,10 +1,11 @@
 package Backend.SMModules;
 
 import javax.swing.*;
-import java.awt.GridLayout;
+import java.text.SimpleDateFormat;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
+import java.io.*;
 import java.util.List;
 
 public class SimulationParam extends javax.swing.JPanel {
@@ -14,6 +15,7 @@ public class SimulationParam extends javax.swing.JPanel {
         initComponents();
         displayUserProfile();
         loadParametersFromFile();
+        startClock(); // Start the clock
     }
 
     private void initComponents() {
@@ -124,13 +126,52 @@ public class SimulationParam extends javax.swing.JPanel {
     }
 
     private void displayUserProfile() {
-        // Display user profile code here
-        // Assuming you have logic to display user profile
-        ImageIcon profileIcon = new ImageIcon(getClass().getResource("/path/to/user_profile_image.png"));
-        jLabel3.setIcon(profileIcon);
-        String userType = "Parent"; // Example, you can replace it with the actual user type
+        // Retrieve user type from login information and update label
+        String userType = getUserTypeFromCredentials("joze", "semaan");
         jLabel4.setText("User Type: " + userType);
+        // Display user's location based on credentials
+        String userLocation = getUserLocationFromCredentials("joze", "semaan");
+        jLabel2.setText("Location: " + userLocation);
     }
+
+    private String getUserTypeFromCredentials(String username, String password) {
+        // Read user credentials from file and return the user type
+        // Example code to read credentials from file
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader("UserData.txt"));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split("\t");
+                if (parts.length == 3 && parts[0].equals(username) && parts[1].equals(password)) {
+                    return parts[2];
+                }
+            }
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return "Unknown"; // Default to "Unknown" if credentials not found
+    }
+
+    private String getUserLocationFromCredentials(String username, String password) {
+        // Read user credentials from file and return the user location
+        // Example code to read credentials from file
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader("UserData.txt"));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split("\t");
+                if (parts.length >= 3 && parts[0].equals(username) && parts[1].equals(password)) {
+                    return parts[2];
+                }
+            }
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return "Unknown"; // Default to "Unknown" if credentials not found
+    }
+    
 
     private void loadParametersFromFile() {
         parametersList = SimulationParametersFileManager.loadParameters();
@@ -173,7 +214,10 @@ public class SimulationParam extends javax.swing.JPanel {
                 String time = timeField.getText();
                 double temperature = Double.parseDouble(tempField.getText());
                 updateParameters(location, date, time, temperature);
-                paramDialog.dispose(); // Close the dialog
+                // Close the dialog
+                paramDialog.dispose();
+                // Update the display with entered values
+                displayEnteredValues(location, date, time, temperature);
             }
         });
         paramDialog.add(submitButton);
@@ -196,22 +240,53 @@ public class SimulationParam extends javax.swing.JPanel {
         double speedFactor = speedFactors[factorIndex];
         // Use the speedFactor to adjust the simulation speed
     }
-    
+
+    private void startClock() {
+        Thread clockThread = new Thread(() -> {
+            while (true) {
+                // Get current time
+                long currentTimeMillis = System.currentTimeMillis();
+                // Format time (HH:mm:ss)
+                String time = new SimpleDateFormat("HH:mm:ss").format(new java.util.Date(currentTimeMillis));
+                // Display time in jLabel3
+                jLabel3.setText("Time: " + time);
+                // Sleep for 1 second
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        // Start the clock thread
+        clockThread.start();
+    }
+
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {
         boolean isSimulationRunning = jToggleButton1.isSelected();
         if (isSimulationRunning) {
+            jToggleButton1.setText("OFF");
             // Start the simulation
         } else {
+            jToggleButton1.setText("ON");
             // Stop the simulation
         }
     }
-    
 
     private void jSlider1StateChanged(javax.swing.event.ChangeEvent evt) {
         int sliderValue = jSlider1.getValue();
         adjustSimulationSpeed(sliderValue);
     }
-    
+
+    private void displayEnteredValues(String location, String date, String time, double temperature) {
+        jLabel2.setText("Location: " + location);
+        // Assuming jLabel1 is used to display date
+        jLabel1.setText("Date: " + date);
+        // Assuming jLabel3 is used to display time
+        jLabel3.setText("Time: " + time);
+        // Assuming jLabel4 is used to display temperature
+        jLabel4.setText("Temperature: " + temperature + "°C");
+    }
 
     // Variables declaration - do not modify
     private javax.swing.JButton jButton1;
