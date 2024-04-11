@@ -99,8 +99,8 @@ import java.awt.BorderLayout;
             e.printStackTrace();
         }
     }
-     public static void main(String[] args) {
-        SwingUtilities.invokeLater(TabbedPaneDemo::createAndShowGUI);
+    //  public static void main(String[] args) {
+    //     SwingUtilities.invokeLater(TabbedPaneDemo::createAndShowGUI);
         
-     }
+    //  }
  }

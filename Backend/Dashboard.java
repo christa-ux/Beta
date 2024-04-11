@@ -1,6 +1,5 @@
 package Backend;
 
-//Singleton design pattern
 public class Dashboard {
     private static Dashboard instance;
     private Dashboard() {
