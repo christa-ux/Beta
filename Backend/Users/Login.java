@@ -6,13 +6,12 @@ import Backend.SMModules.SHSFrame;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
-import java.util.Vector;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import Backend.Users.LoginEvent;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.EventListener;
+
 
 class SignUp extends JFrame {
     JTextField t1,t2;
@@ -57,7 +56,8 @@ class SignUp extends JFrame {
         jRadioButton4.setBounds(400, 180, 80, 50);
         L1.setBounds(100, 140, 150, 50);
 
-
+       
+    
         b1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae){
                 try {
@@ -69,6 +69,29 @@ class SignUp extends JFrame {
                         JOptionPane.showMessageDialog(new JFrame(), "Username and password cannot contain spaces.");
                         return; 
                     }
+                    if(username.isEmpty()||password.isEmpty()||(jRadioButton1.isSelected()==false && jRadioButton2.isSelected()==false && jRadioButton3.isSelected()==false && jRadioButton4.isSelected()==false)) {
+                        JOptionPane.showMessageDialog(new JFrame(), "Username, password, or usertype is empty");
+                        return;
+                    }
+                   
+                    // Check if username already exists
+            boolean usernameExists = false;
+            FileReader fr = new FileReader("UserData.txt");
+            BufferedReader br = new BufferedReader(fr);
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] parts = line.split("\t");
+                if (parts.length >= 1 && parts[0].equals(username)) {
+                    usernameExists = true;
+                    break;
+                }
+            }
+            fr.close();
+
+            if (usernameExists) {
+                JOptionPane.showMessageDialog(new JFrame(), "Username already exists. Please choose a different username.");
+                return;
+            }
                     User newUser = null;
                     if(jRadioButton1.isSelected()) {
                         newUser = new Parent(username, password);
@@ -88,15 +111,16 @@ class SignUp extends JFrame {
                 fw.close();  
                 DefaultTableModel model = (DefaultTableModel) SHSFrame.TableUsers.getModel();
                 model.addRow(new Object[]{newUser.getUsername(), newUser.getUserPassword(), newUser.getType()});  
-                JFrame f=new JFrame();
-                JOptionPane.showMessageDialog(new JFrame(), "Registration Completed");
-                dispose();
+                
+                JOptionPane.showMessageDialog(new JFrame(), "registration completed");
+                
 
 
                 // Open the login page
                 Login login = new Login();
                 login.setBounds(400, 200, 500, 300);
                 login.setVisible(true);
+                dispose();
 
                 }catch(Exception e) {
                     e.printStackTrace();
@@ -104,6 +128,10 @@ class SignUp extends JFrame {
             }
     
         });
+
+        
+        
+    
     add(t1);
     add(t2);
     add(b1);
@@ -227,20 +255,7 @@ private void fireLoginEvent() {
     }
     TabbedPaneDemo.createAndShowGUI();
         dispose(); // Close the login window
-    // Open the dashboard
-    // SwingUtilities.invokeLater(new Runnable() {
-    //     public void run() {
-    //         UIManager.put("swing.boldMetal", Boolean.FALSE);
-    //         TabbedPaneDemo.createAndShowGUI();
-    //     }
-    // });
+    
 }
-// class LoginDemo {
-//     public static void main(String[] args) {
-//         Login l=new Login();
-//         l.setBounds(400,200,500,300);
-//         l.setVisible(true); //by default the form is hidden
-
-//     }
-// }
+// 
  }

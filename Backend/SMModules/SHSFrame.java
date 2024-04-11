@@ -6,8 +6,9 @@ import java.util.Vector;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
-
 public class SHSFrame extends javax.swing.JFrame implements LoginListener {
+   
+   
     public SHSFrame() {
         initComponents();
   
@@ -233,6 +234,7 @@ public class SHSFrame extends javax.swing.JFrame implements LoginListener {
   
     @Override
     public void loginPerformed(LoginEvent event) {
+        
         try {
             FileInputStream file = new FileInputStream("UserData.txt");
             ObjectInputStream input = new ObjectInputStream(file);
@@ -249,8 +251,9 @@ public class SHSFrame extends javax.swing.JFrame implements LoginListener {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        
     }
-                             
+                  
       
     private void passwordActionPerformed(java.awt.event.ActionEvent evt) {}                                        
 
@@ -260,6 +263,7 @@ public class SHSFrame extends javax.swing.JFrame implements LoginListener {
         String usernameText = username.getText();
         String passwordText = password.getText();
         UserType userTypeText;
+       
         if (usernameText.contains(" ") || passwordText.contains(" ")) {
             JOptionPane.showMessageDialog(this, "Username and password cannot contain spaces.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
@@ -298,6 +302,7 @@ JOptionPane.showMessageDialog(this, "Please enter all fields", "try again", JOpt
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {                                             
         int row = TableUsers.getSelectedRow();
+       
     if (row < 0) {
         JOptionPane.showMessageDialog(this, "No row selected", "Select Row", JOptionPane.ERROR_MESSAGE);
     } else {

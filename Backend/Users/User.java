@@ -5,7 +5,7 @@ public class User implements Serializable {  //CRUD on user
   
     private String username; 
     private String password;
-    private User.UserType userType;
+    public static User.UserType userType;
     User(String username, String password, UserType userType) {
         this.username=username;
         this.password=password;
@@ -17,7 +17,7 @@ public class User implements Serializable {  //CRUD on user
     public String getUserPassword() {
         return password;
     }
-    public UserType getType() {
+    public static UserType getType() {
         return userType;
     }
     public void setUsername(String username) {
