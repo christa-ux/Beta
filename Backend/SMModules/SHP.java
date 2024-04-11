@@ -1,4 +1,6 @@
 package Backend.SMModules;
+import javax.swing.JOptionPane;
+
 
 public class SHP extends javax.swing.JFrame {
     private boolean isAwayMode = false;
@@ -104,10 +106,10 @@ public class SHP extends javax.swing.JFrame {
             // Save the entered number to a variable or data structure in your application
             // For example, you could save it to a variable in your SHPModule class
             //shpModule.setAlertDelay(delayMinutes);
-            System.out.println("Time delay saved: " + delayMinutes + " minutes");
+            JOptionPane.showMessageDialog(this, "Time delay saved: " + delayMinutes + " minutes");
         } catch (NumberFormatException ex) {
             // Handle the case where the user enters invalid input
-            System.err.println("Invalid input: Please enter a valid number.");
+            JOptionPane.showMessageDialog(this, "Invalid input: Please enter a valid number.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 
