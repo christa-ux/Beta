@@ -31,7 +31,7 @@ public class Home {
         for (List<Room> rooms : zones.values()) {
             for (Room room : rooms) {
                 if (room.getRoomId().equals(roomId)) {
-                    room.setOccupied(isOccupied);
+                    room.setOccupancy(isOccupied);
                     break;
                 }
             }
@@ -49,6 +49,5 @@ public class Home {
         List<Room> rooms = getRoomsInZone(zoneId);
         return rooms.stream().mapToDouble(Room::getCurrentTemperature).average().orElse(Double.NaN);
     }
-    
-  
+
 }
