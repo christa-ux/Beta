@@ -1,0 +1,4 @@
+hahahaha	hehehe	GUEST
+daddy	dad	PARENT
+username	password	STRANGER
+joze	semaan	PARENT
